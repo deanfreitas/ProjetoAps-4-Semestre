@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,6 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class RespostasContinuacao extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3447064178368191755L;
 	JButton B1, B2, B3;
 	JPanel P1;
 	JLabel L1, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33,
@@ -24,7 +29,7 @@ public class RespostasContinuacao extends JFrame implements ActionListener {
 		setLocation(50, 50);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon icon = new ImageIcon("./src/resp.jpg");
+		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("resp.jpg"));
 		L1 = new JLabel(icon);
 		L1.setLocation(0, 0);
 		L1.setSize(900, 600);
@@ -156,7 +161,7 @@ public class RespostasContinuacao extends JFrame implements ActionListener {
 		L40.setFont(new Font("LCD", Font.BOLD, 14));
 		L40.setForeground(Color.green);
 
-		ImageIcon img2 = new ImageIcon("./src/v.png");
+		ImageIcon img2 = new ImageIcon(getClass().getClassLoader().getResource("v.png"));
 		B1 = new JButton("", img2);
 		B1.setSize(120, 50);
 		B1.setLocation(380, 480);
@@ -169,7 +174,7 @@ public class RespostasContinuacao extends JFrame implements ActionListener {
 		B1.setContentAreaFilled(false);
 		B1.setBorderPainted(false);
 
-		ImageIcon img3 = new ImageIcon("./src/sd.png");
+		ImageIcon img3 = new ImageIcon(getClass().getClassLoader().getResource("sd.png"));
 		B2 = new JButton("", img3);
 		B2.setSize(150, 50);
 		B2.setLocation(230, 480);
@@ -182,7 +187,7 @@ public class RespostasContinuacao extends JFrame implements ActionListener {
 		B2.setContentAreaFilled(false);
 		B2.setBorderPainted(false);
 
-		ImageIcon img4 = new ImageIcon("./src/se.png");
+		ImageIcon img4 = new ImageIcon(getClass().getClassLoader().getResource("se.png"));
 		B3 = new JButton("", img4);
 		B3.setSize(150, 50);
 		B3.setLocation(530, 480);
@@ -238,9 +243,12 @@ public class RespostasContinuacao extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == B1) {
-			new InicioJogo().setVisible(true);
+			try {
+				new InicioJogo().setVisible(true);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			dispose();
-
 		}
 
 		if (e.getSource() == B2) {

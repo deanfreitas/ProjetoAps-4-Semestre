@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,7 +12,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Gilberto Freitas
+ *
+ */
 public class MelhoresJogadores extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4980141739226059025L;
 	private JButton imagemVoltar;
 	private JPanel tela;
 	private JLabel imagem;
@@ -30,7 +40,7 @@ public class MelhoresJogadores extends JFrame implements ActionListener {
 		setLocation(50, 50);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon icon = new ImageIcon("./src/mj.jpg");
+		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("mj.jpg"));
 		imagem = new JLabel(icon);
 		imagem.setLocation(0, 0);
 		imagem.setSize(900, 600);
@@ -72,7 +82,7 @@ public class MelhoresJogadores extends JFrame implements ActionListener {
 		mostrarPontuacao.setForeground(Color.MAGENTA);
 		mostrarPontuacao.setVisible(true);
 
-		ImageIcon img2 = new ImageIcon("./src/v.png");
+		ImageIcon img2 = new ImageIcon(getClass().getClassLoader().getResource("v.png"));
 		imagemVoltar = new JButton("", img2);
 		imagemVoltar.setSize(120, 50);
 		imagemVoltar.setLocation(380, 480);
@@ -324,7 +334,11 @@ public class MelhoresJogadores extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == imagemVoltar) {
-			new InicioJogo().setVisible(true);
+			try {
+				new InicioJogo().setVisible(true);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			dispose();
 		}
 	}

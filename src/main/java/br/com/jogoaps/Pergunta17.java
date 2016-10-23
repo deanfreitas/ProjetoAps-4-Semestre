@@ -12,6 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Pergunta17 extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8921027060027027768L;
 	private JButton imagemSair;
 	private JButton respostaA;
 	private JButton respostaB;
@@ -32,7 +36,7 @@ public class Pergunta17 extends JFrame implements ActionListener {
 		setLocation(50, 50);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon icon = new ImageIcon("./src/s.jpg");
+		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("s.jpg"));
 		imagem = new JLabel(icon);
 		imagem.setLocation(0, 0);
 		imagem.setSize(900, 600);
@@ -44,7 +48,7 @@ public class Pergunta17 extends JFrame implements ActionListener {
 		pergunta.setFont(new Font("arial", Font.BOLD, 20));
 		pergunta.setForeground(Color.black);
 
-		ImageIcon img3 = new ImageIcon("./src/b.png");
+		ImageIcon img3 = new ImageIcon(getClass().getClassLoader().getResource("b.png"));
 		imagemSair = new JButton("", img3);
 		imagemSair.setSize(120, 50);
 		imagemSair.setLocation(380, 480);
@@ -147,7 +151,6 @@ public class Pergunta17 extends JFrame implements ActionListener {
 		}
 		if (e.getSource() == imagemSair) {
 			System.exit(0);
-
 		}
 	}
 }

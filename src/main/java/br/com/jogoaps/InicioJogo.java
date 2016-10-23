@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,6 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class InicioJogo extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7663559197960438267L;
 	private JButton inicioJogo;
 	private JButton melhoresJogadores;
 	private JButton respostasPerguntas;
@@ -21,7 +26,7 @@ public class InicioJogo extends JFrame implements ActionListener {
 	private JLabel segundaLinhaTitulo;
 	private JPanel tela;
 
-	public InicioJogo() {
+	public InicioJogo() throws IOException {
 		setTitle("PRESERVAR O MEIO AMBIENTE É PRESERVAR O PLANETA. PRESERVAR O PLANETA  É PRESERVAR A VIDA.");
 		setSize(900, 600);
 		setResizable(false);
@@ -47,7 +52,7 @@ public class InicioJogo extends JFrame implements ActionListener {
 		segundaLinhaTitulo.setFont(new Font("Showcard Gothic", Font.BOLD, 40));
 		segundaLinhaTitulo.setForeground(Color.orange);
 
-		ImageIcon img = new ImageIcon("./src/a.png");
+		ImageIcon img = new ImageIcon(getClass().getClassLoader().getResource("a.png"));
 		inicioJogo = new JButton("", img);
 		inicioJogo.setSize(235, 85);
 		inicioJogo.setLocation(330, 210);
@@ -73,7 +78,7 @@ public class InicioJogo extends JFrame implements ActionListener {
 		respostasPerguntas.setFocusable(false);
 		respostasPerguntas.setForeground(Color.BLUE);
 
-		ImageIcon icon = new ImageIcon(".\\src\\we1.gif");
+		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("we1.gif"));
 		imagem = new JLabel(icon);
 		imagem.setLocation(0, 0);
 		imagem.setSize(900, 600);
@@ -94,10 +99,6 @@ public class InicioJogo extends JFrame implements ActionListener {
 		getContentPane().add(imagem);
 		getContentPane().add(tela);
 		tela.add(imagem);
-	}
-
-	public static void main(String arg[]) {
-		new InicioJogo().setVisible(true);
 	}
 
 	public void actionPerformed(ActionEvent e) {

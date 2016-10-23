@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Pergunta1 extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2410718494926058585L;
 	private JButton imagemVoltar;
 	private JButton respostaA;
 	private JButton respostaB;
@@ -35,7 +40,7 @@ public class Pergunta1 extends JFrame implements ActionListener {
 		setLocation(50, 50);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		ImageIcon icon = new ImageIcon("./src/b.jpg");
+		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("b.jpg"));
 		imagem = new JLabel(icon);
 		imagem.setLocation(0, 0);
 		imagem.setSize(900, 600);
@@ -59,7 +64,7 @@ public class Pergunta1 extends JFrame implements ActionListener {
 		nomejogador.setFont(new Font("Showcard Gothic", Font.BOLD, 30));
 		nomejogador.setForeground(Color.orange);
 
-		ImageIcon img2 = new ImageIcon("./src/v.png");
+		ImageIcon img2 = new ImageIcon(getClass().getClassLoader().getResource("v.png"));
 		imagemVoltar = new JButton("", img2);
 		imagemVoltar.setSize(120, 50);
 		imagemVoltar.setLocation(380, 480);
@@ -120,7 +125,7 @@ public class Pergunta1 extends JFrame implements ActionListener {
 		respostaD.setBorderPainted(false);
 		respostaD.setVisible(false);
 
-		ImageIcon img4 = new ImageIcon("./src/o.png");
+		ImageIcon img4 = new ImageIcon(getClass().getClassLoader().getResource("o.png"));
 		imagemOK = new JButton("", img4);
 		imagemOK.setSize(120, 50);
 		imagemOK.setLocation(400, 280);
@@ -164,7 +169,11 @@ public class Pergunta1 extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == imagemVoltar) {
-			new InicioJogo().setVisible(true);
+			try {
+				new InicioJogo().setVisible(true);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			dispose();
 
 		}
